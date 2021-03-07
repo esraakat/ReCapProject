@@ -3,9 +3,10 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryCarDal : ICarDal
     {
@@ -17,9 +18,10 @@ namespace DataAccess.Concrete
             {
                 new Car {Id = 1, BrandId = 1, ColorId = 1, DailyPrice = 100, ModelYear = "2010", Description = "Sports car"},
                 new Car {Id = 2, BrandId = 1, ColorId = 1, DailyPrice = 200, ModelYear = "2011", Description = "Company Car"},
-                new Car {Id = 3, BrandId = 2, ColorId = 1, DailyPrice = 300, ModelYear = "2012", Description = "Convertible"},
-                new Car {Id = 4, BrandId = 3, ColorId = 2, DailyPrice = 400, ModelYear = "2013", Description = "Coupe"},
-                new Car {Id = 5, BrandId = 4, ColorId = 2, DailyPrice = 500, ModelYear = "2014", Description = "Sports Utility Vehicle"},
+                new Car {Id = 3, BrandId = 2, ColorId = 1, DailyPrice = 300, ModelYear = "2012", Description = "Automobile"},
+                new Car {Id = 4, BrandId = 2, ColorId = 2, DailyPrice = 400, ModelYear = "2013", Description = "Coupe"},
+                new Car {Id = 5, BrandId = 3, ColorId = 2, DailyPrice = 500, ModelYear = "2014", Description = "Minivan"},
+                new Car {Id = 6, BrandId = 3, ColorId = 2, DailyPrice = 600, ModelYear = "2015", Description = "SUV"},
             };
         }
 
@@ -35,15 +37,25 @@ namespace DataAccess.Concrete
             _cars.Remove(CarDeleted);
         }
 
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll()
         {
             return _cars;
         }
 
-        public List<Car> GetById(int Id)
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            return _cars.Where(c => c.Id == Id).ToList();
+            throw new NotImplementedException();
         }
+
+        //public List<Car> GetById(int Id)
+        //{
+        //    return _cars.Where(c => c.Id == Id).ToList();
+        //}
 
         public void Update(Car car)
         {
