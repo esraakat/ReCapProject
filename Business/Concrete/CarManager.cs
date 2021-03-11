@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
+
         ICarDal _carDal;
 
         public CarManager(ICarDal carDal)
@@ -16,35 +18,34 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public void Add(Car car)
+        {
+            _carDal.Add(car);
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
+        }
+
         public List<Car> GetAll()
         {
-            //business codes...
             return _carDal.GetAll();
         }
 
-        public List<Car> GetCarsByBrandId(int Id)
+        public Car GetById(int Id)
         {
-            return _carDal.GetAll(c => c.BrandId == Id);
+            return _carDal.Get(c => c.Id == Id);
         }
 
-        public List<Car> GetCarsByColorId(int Id)
+        public void Update(Car car)
         {
-            return _carDal.GetAll(c => c.ColorId == Id);
+            _carDal.Update(car);
         }
 
-        public void Add(Car car)
+        public List<CarDetailDto> GetCarDetails()
         {
-            if (car.Description.Length >= 2 && car.DailyPrice > 0)
-            {
-                _carDal.Add(car);
-            }
-            else
-            {
-                Console.WriteLine("Try Again!");
-            }
+            return _carDal.GetCarDetails() ;
         }
-
-
-
     }
 }
