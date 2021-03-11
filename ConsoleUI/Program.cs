@@ -103,6 +103,5 @@ namespace ConsoleUI
                 Console.WriteLine(car.CarName + " - " + car.ColorName + " - " + car.BrandName + " - " + car.DailyPrice);
             }
         }
-
     }
 }
