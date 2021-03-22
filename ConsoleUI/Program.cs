@@ -53,55 +53,100 @@ namespace ConsoleUI
         private static void BrandGetById()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            Console.WriteLine(brandManager.GetById(1).BrandName);
+
+            var result = brandManager.GetById(1);
+
+            if (result.Success)
+            {
+                Console.WriteLine(result.Data.BrandName);
+            }
         }
 
         private static void ColorGetById()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            Console.WriteLine(colorManager.GetById(1).ColorName);
+
+            var result = colorManager.GetById(1);
+
+            if (result.Success)
+            {
+                Console.WriteLine(result.Data.ColorName);
+            }
         }
 
         private static void CarGetById()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            Console.WriteLine(carManager.GetById(2).Description);
+
+            var result = carManager.GetById(2);
+
+
+            if (result.Success)
+            {
+                Console.WriteLine(result.Data.Description);
+            }
         }
 
         private static void BrandGetAllTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+
+            var result = brandManager.GetAll();
+
+            if (result.Success)
             {
-                Console.WriteLine(brand.BrandName);
+                foreach (var brand in result.Data)
+                {
+                    Console.WriteLine(brand.BrandName);
+                }
             }
         }
 
         private static void ColorGetAllTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
+
+            var result = colorManager.GetAll();
+
+            if (result.Success)
             {
-                Console.WriteLine(color.ColorName);
+                foreach (var color in result.Data)
+                {
+                    Console.WriteLine(color.ColorName);
+                }
             }
         }
 
         private static void CarGetAllTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetAll())
+
+            var result = carManager.GetAll();
+
+            if (result.Success)
             {
-                Console.WriteLine(car.Description);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.Description);
+                }
             }
         }
 
         private static void CarDetailsTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
+
+            var result = carManager.GetCarDetails();
+
+            if (result.Success)
             {
-                Console.WriteLine(car.CarName + " - " + car.ColorName + " - " + car.BrandName + " - " + car.DailyPrice);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.CarName + " - " + car.ColorName + " - " + car.BrandName + " - " + car.DailyPrice);
+                }
             }
+
+
         }
     }
 }
