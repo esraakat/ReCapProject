@@ -11,16 +11,27 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarDetailsTest();
-            CarGetAllTest();
-            ColorGetAllTest();
-            BrandGetAllTest();
-            CarGetById();
-            ColorGetById();
-            BrandGetById();
-            CarCrudTest();
-            ColorCrudTest();
-            BrandCrudTest();
+            //CarDetailsTest();
+            //CarGetAllTest();
+            //ColorGetAllTest();
+            //BrandGetAllTest();
+            //CarGetById();
+            //ColorGetById();
+            //BrandGetById();
+            //CarCrudTest();
+            //ColorCrudTest();
+            //BrandCrudTest();
+
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.GetCustomerDetails();
+
+            if (result.Success)
+            {
+                foreach (var customer in result.Data)
+                {
+                    Console.WriteLine(customer.FirstName + " " + customer.LastName + ", " + customer.Email + ", " + customer.CompanyName);
+                }
+            }
         }
 
         private static void BrandCrudTest()
@@ -44,9 +55,9 @@ namespace ConsoleUI
         private static void CarCrudTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            carManager.Add(new Car { Id = 7, BrandId = 2, ColorId = 2, ModelYear = "2016", DailyPrice = 500, Description = "Sports Car" });
-            carManager.Delete(new Car { Id = 7 });
-            carManager.Update(new Car { Id = 1, Description = "Automobile" });
+            carManager.Add(new Car { CarId = 7, BrandId = 2, ColorId = 2, ModelYear = "2016", DailyPrice = 500, Description = "Sports Car" });
+            carManager.Delete(new Car { CarId = 7 });
+            carManager.Update(new Car { CarId = 1, Description = "Automobile" });
             CarGetAllTest();
         }
 

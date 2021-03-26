@@ -6,24 +6,25 @@ namespace Business.Constants
 {
     public static class Messages //sürekli newlemeyeyim diye static
     {
-        public static string CarAdded = "Ürün eklendi";
-        public static string CarDeleted = "Ürün silindi";
-        public static string CarUpdated = "Ürün güncellendi.";
-        public static string CarNameInvalid = "Ürün adı geçersiz";
-        public static string CarsListed = "Ürünler listelendi";
+        public static string CarAdded = "The car has been added!";
+        public static string CarDeleted = "The car has been deleted!";
+        public static string CarUpdated = "The car has been updated!";
+        public static string CarNameInvalid = "The name of car is invalid! ";
+        public static string CarsListed = "The cars have been listed!";
+        public static string CarRented = "The car has been rented!";
+        public static string CarRentedInvalid = "The car has already been rented!";
 
-        public static string BrandAdded = "Ürün eklendi";
-        public static string BrandDeleted = "Ürün silindi";
-        public static string BrandUpdated = "Ürün güncellendi.";
-        public static string BrandNameInvalid = "Ürün adı geçersiz";
-        public static string BrandsListed = "Ürünler listelendi";
+        public static string CustomerAdded = "The customer has been added!";
+        public static string CustomerDeleted = "The customer has been deleted!";
+        public static string CustomerUpdated = "The customer has been updated!";
+        public static string CustomerInvalid = "The name of customer is invalid!";
+        public static string CustomersListed = "The customers have been listed!";
 
-        public static string ColorAdded = "Ürün eklendi";
-        public static string ColorDeleted = "Ürün silindi";
-        public static string ColorUpdated = "Ürün güncellendi.";
-        public static string ColorInvalid = "Ürün adı geçersiz";
-        public static string ColorsListed = "Ürünler listelendi";
-
+        public static string UserAdded = "The user has been added!";
+        public static string UserDeleted = "The user has been deleted!";
+        public static string UserUpdated = "The user has been updated!";
+        public static string UserInvalid = "The name of user invalid!";
+        public static string UsersListed = "The users have been listed!";
 
         public static string MaintenanceTime = "Sistem bakımda";
     }
