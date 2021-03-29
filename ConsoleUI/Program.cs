@@ -21,7 +21,11 @@ namespace ConsoleUI
             //CarCrudTest();
             //ColorCrudTest();
             //BrandCrudTest();
+            //CustomerDetailsTest();
+        }
 
+        private static void CustomerDetailsTest()
+        {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
             var result = customerManager.GetCustomerDetails();
 
@@ -156,8 +160,6 @@ namespace ConsoleUI
                     Console.WriteLine(car.CarName + " - " + car.ColorName + " - " + car.BrandName + " - " + car.DailyPrice);
                 }
             }
-
-
         }
     }
 }
