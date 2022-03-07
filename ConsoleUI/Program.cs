@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
 using System;
 
 namespace ConsoleUI
@@ -14,6 +15,11 @@ namespace ConsoleUI
             {
                 Console.WriteLine(car.Description);
             }
+
+            Car car1 = new Car() { Id = 1, Description = "E", DailyPrice = 100};
+
+            CarManager carManager1 = new CarManager(new EfCarDal());
+            carManager1.Add(car1);
 
         }
     }
