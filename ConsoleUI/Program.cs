@@ -10,8 +10,6 @@ namespace ConsoleUI
     {
         static void Main()
         {
-            //CarTest();
-
             //CarManager carManager1 = new CarManager(new EfCarDal());
 
             //carManager1.Add(new Car { Id = 1, BrandId = 1, ColorId = 1, ModelYear = "2015", DailyPrice = 300, Description = "Linea" });
@@ -27,6 +25,19 @@ namespace ConsoleUI
             //brandManager.Add(new Brand { Id = 1, BrandName = "Fiat" });
             //brandManager.Add(new Brand { Id = 2, BrandName = "Ford" });
             //brandManager.Add(new Brand { Id = 3, BrandName = "Audi" });
+
+            //CarTest();
+
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Customer { Id = 1, CompanyName = "Fiat" });
+            customerManager.Add(new Customer { Id = 2, CompanyName = "Ford" });
+            customerManager.Add(new Customer { Id = 3, CompanyName = "Audi" });
+            customerManager.Add(new Customer { Id = 4, CompanyName = "BMW" });
+
+            foreach (var customer in customerManager.GetAll().Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
 
 
             //foreach (var car in carManager1.GetCarDetails())
@@ -54,13 +65,17 @@ namespace ConsoleUI
 
         private static void CarTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            var result = carManager.GetAll();
+            //Car car1 = new Car() { Id = 1, Description = "E", DailyPrice = 100 };
+            //CarManager carManager1 = new CarManager(new EfCarDal());
+            //carManager1.Add(car1);
+
+            CarManager carManager1 = new CarManager(new EfCarDal());
+            var result = carManager1.GetCarDetails();
             if (result.Success)
             {
                 foreach (var car in result.Data)
                 {
-                    Console.WriteLine(car.Description);
+                    Console.WriteLine(car.CarName );
                 }
             }
             else
@@ -68,10 +83,9 @@ namespace ConsoleUI
                 Console.WriteLine(result.Message);
             }
 
-            Car car1 = new Car() { Id = 1, Description = "E", DailyPrice = 100 };
 
-            CarManager carManager1 = new CarManager(new EfCarDal());
-            carManager1.Add(car1);
+
+
         }
     }
 }
