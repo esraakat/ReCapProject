@@ -26,18 +26,18 @@ namespace ConsoleUI
             //brandManager.Add(new Brand { Id = 2, BrandName = "Ford" });
             //brandManager.Add(new Brand { Id = 3, BrandName = "Audi" });
 
+            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            //customerManager.Add(new Customer { Id = 1, CompanyName = "Fiat" });
+            //customerManager.Add(new Customer { Id = 2, CompanyName = "Ford" });
+            //customerManager.Add(new Customer { Id = 3, CompanyName = "Audi" });
+            //customerManager.Add(new Customer { Id = 4, CompanyName = "BMW" });
+
             //CarTest();
 
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            customerManager.Add(new Customer { Id = 1, CompanyName = "Fiat" });
-            customerManager.Add(new Customer { Id = 2, CompanyName = "Ford" });
-            customerManager.Add(new Customer { Id = 3, CompanyName = "Audi" });
-            customerManager.Add(new Customer { Id = 4, CompanyName = "BMW" });
-
-            foreach (var customer in customerManager.GetAll().Data)
-            {
-                Console.WriteLine(customer.CompanyName);
-            }
+            //foreach (var customer in customerManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(customer.CompanyName);
+            //}
 
 
             //foreach (var car in carManager1.GetCarDetails())
