@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,5 +19,6 @@ namespace Business.Constants
         public static string TheCarHasNotBeenDeliveredYet = "Araba henüz teslim edilmemiş";
         public static string TheImageLimitForThisCarHasBeenExceed = "Bu araba için daha fazla resim ekleyemezsin";
         public static string ImageAdded = "Resim eklendi";
+        public static string AuthorizationDenied = "Yetkiniz yok";
     }
 }

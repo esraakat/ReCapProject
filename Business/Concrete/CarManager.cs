@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -25,6 +26,8 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarValidator))] //productvalidator'ı kullanarak add metodunu doğrula 
+        
+        [SecuredOperation("car.add, admin")]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
