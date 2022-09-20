@@ -1,7 +1,7 @@
 # Kullanılan Teknolojiler
 - .NET
 - ASP.NET 
- - Microsoft'un web geliştirme ortamının ve bunları içeren kütüphanelerin toplandığı yapıdır.
+   - Microsoft'un web geliştirme ortamının ve bunları içeren kütüphanelerin toplandığı yapıdır.
 .NET projelerindeki web projelerine verilen isimdir.
 Apı Restful Mimariyi destekler.
 Restful Mimari, geliştirdiğimiz .NET'i tanımayan bir Java uygulamasının, IOS uygulamasının vb. bizim sistemimizle iletişim kurmasını sağlayan bir ortamdır.
