@@ -1,6 +1,6 @@
 # Kullanılan Teknolojiler
 - .NET
-ASP.NET
+- ASP.NET
 Microsoft'un web geliştirme ortamının ve bunları içeren kütüphanelerin toplandığı yapıdır.
 .NET projelerindeki web projelerine verilen isimdir.
 Apı Restful Mimariyi destekler.
