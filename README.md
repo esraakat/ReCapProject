@@ -1,5 +1,7 @@
 # Araba Kiralama Projesi
-Bu proje Araba Kiralama projesidir. Proje hem Çok katmanlı Mimari kullanılmıştır hem de SOLID prensiplerine bağlı kalınarak oluşturulmuş bir projedir.
+- Proje Araba Kiralama projesidir. 
+- Proje Çok katmanlı Mimari ile oluşturulmuştur.
+- Ayrıca SOLID prensiplerine bağlı kalınarak oluşturulmuş bir projedir.
 
 # Katmanlar
 - Core : Projenin core katmanı evrensel işlemler için kullanılır.
