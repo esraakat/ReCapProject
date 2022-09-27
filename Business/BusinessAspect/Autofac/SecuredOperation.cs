@@ -11,20 +11,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.BusinessAspect.Autofac //yetkisi var mı
+namespace Business.BusinessAspect.Autofac
 {
-    //JWT için"
+    //JWT için, Yetkisi var mı?
+    //Autherization aspectler genellikle business'a yazılır, çünkü her projenin yetkilendirme algoritması değişebilir.
     public class SecuredOperation : MethodInterception
     {
         private string[] _roles;
-        private IHttpContextAccessor _httpContextAccessor;  //product.add, admin gibi rolleri virgüller ayırarak verebiliri çünkü attribute
+        private IHttpContextAccessor _httpContextAccessor;
 
         public SecuredOperation(string roles)
         {
             _roles = roles.Split(',');
             _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
-
         }
+        //product.add, admin gibi rolleri virgüller ayırarak verebilir çünkü attribute
 
         protected override void OnBefore(IInvocation invocation)
         {

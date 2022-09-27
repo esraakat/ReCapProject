@@ -9,11 +9,11 @@ namespace Core.Utilities.Business
 {
     public class BusinessRules
     {
-        public static IResult Run(params IResult[] logics)
+        public static IResult Run(params IResult[] logics) //params - virgülle aırarak istediğim kadar IResult verebilirim
         {
             foreach (var logic in logics)
             {
-                if (!logic.Success)
+                if (!logic.Success) //parametreyle gönderilen iş kurallarına uymayanları business'a bildir
                     return logic;
             }
             return new SuccessResult();

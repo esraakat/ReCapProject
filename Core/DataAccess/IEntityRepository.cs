@@ -13,7 +13,7 @@ namespace Core.DataAccess
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);
-        List<T> GetAll(Expression<Func<T, bool>> filter = null);
+        List<T> GetAll(Expression<Func<T, bool>> filter = null); //filtre vermeyebilirsin filtre yoksa tüm datayı getir
         T Get(Expression<Func<T, bool>> filter);
     }
 }

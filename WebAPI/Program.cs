@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
@@ -22,9 +23,6 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()) //se
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
-
-
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -64,47 +62,47 @@ app.Run();
 
 
 
-//public class Startup
-//{
-//    public Startup(IConfiguration configuration)
-//    {
-//        Configuration = configuration;
-//    }
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
 
-//    public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; }
 
-//    // This method gets called by the runtime. Use this method to add services to the container.
-//    public void ConfigureServices(IServiceCollection services)
-//    {
-//        //AOP
-//        //Autofac, Ninject,CastleWindsor, StructureMap, LightInject, DryInject -->IoC Container
-//        //AOP
-//        //Postsharp
-//        services.AddControllers();
-//        //services.AddSingleton<IProductService,ProductManager>();
-//        //services.AddSingleton<IProductDal, EfProductDal>();
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        //AOP
+        //Autofac, Ninject,CastleWindsor, StructureMap, LightInject, DryInject -->IoC Container
+        //AOP
+        //Postsharp
+        services.AddControllers();
+        //services.AddSingleton<IProductService,ProductManager>();
+        //services.AddSingleton<IProductDal, EfProductDal>();
 
-//        services.AddCors();
+        services.AddCors();
 
-//        var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+        var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
-//        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-//            .AddJwtBearer(options =>
-//            {
-//                options.TokenValidationParameters = new TokenValidationParameters
-//                {
-//                    ValidateIssuer = true,
-//                    ValidateAudience = true,
-//                    ValidateLifetime = true,
-//                    ValidIssuer = tokenOptions.Issuer,
-//                    ValidAudience = tokenOptions.Audience,
-//                    ValidateIssuerSigningKey = true,
-//                    IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
-//                };
-//            });
-
-//    }
-//}
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                };
+            });
+        ServiceTool.Create(services);
+    }
+}
 
 
 

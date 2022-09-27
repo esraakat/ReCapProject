@@ -13,10 +13,10 @@ namespace Core.Utilities.Interceptors
         protected virtual void OnAfter(IInvocation invocation) { }
         protected virtual void OnException(IInvocation invocation, System.Exception e) { }
         protected virtual void OnSuccess(IInvocation invocation) { }
-        public override void Intercept(IInvocation invocation) //çalıştırmak istediğin method, add gibi düşün
+        public override void Intercept(IInvocation invocation) //çalıştırmak istediğin metod, add gibi düşün
         {
             var isSuccess = true;
-            OnBefore(invocation); //methodun başında çalışır.
+            OnBefore(invocation); //metodun başında çalışır.
             try
             {
                 invocation.Proceed();

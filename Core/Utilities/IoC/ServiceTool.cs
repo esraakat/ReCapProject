@@ -9,6 +9,7 @@ namespace Core.Utilities.IoC
 {
     public static class ServiceTool
     {
+        //WebApi'de veya Autofac'te oluşturduğumuz injections'ı oluşturabilmemiz için
         public static IServiceProvider ServiceProvider { get; private set; }
 
         public static IServiceCollection Create(IServiceCollection services)

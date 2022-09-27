@@ -2,6 +2,7 @@
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,34 +25,19 @@ namespace Business.Concrete
             return _userDal.GetClaims(user);
         }
 
-        public void Add(User user)
-        {
-            _userDal.Add(user);
-        }
-
         public User GetByMail(string email)
         {
             return _userDal.Get(u => u.Email == email);
         }
 
-        IResult IUserService.Add(User user)
+        public IDataResult<List<UserDetailDto>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<UserDetailDto>>(_userDal.GetAll());
         }
 
-        public IResult Delete(User user)
+        public void Add(User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public IResult Update(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<User>> GetAll()
-        {
-            throw new NotImplementedException();
+            _userDal.Add(user);
         }
     }
 

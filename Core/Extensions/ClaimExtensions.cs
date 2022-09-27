@@ -10,6 +10,7 @@ namespace Core.Extensions
 {
     public static class ClaimExtensions
     {
+        //c#'ta bir extension oluşturmak için hem class hem de metot statik olmalıdır
         public static void AddEmail(this ICollection<Claim> claims, string email)
         {
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, email));

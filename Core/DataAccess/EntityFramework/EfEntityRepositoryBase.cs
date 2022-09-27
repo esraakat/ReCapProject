@@ -15,6 +15,8 @@ namespace Core.DataAccess.EntityFramework
     {
         public void Add(TEntity entity)
         {
+            //IDisponsable pattern implementation of c#
+            //using bitince içindeki nesne hemen bellekten atılır çünkü context nesnesi biraz pahalı
             using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);

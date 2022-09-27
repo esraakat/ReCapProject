@@ -9,6 +9,8 @@ namespace Core.Utilities.Security.Encryption
 {
     public class SecurityKeyHelper
     {
+        //stringlerle encryption'a parametre geçemezsin onu byte array haline getirmelisin. 
+        //biz algoritma kullanarak şifreli bir token oluşturacağız
         public static SecurityKey CreateSecurityKey(string securityKey)
         {
             return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));

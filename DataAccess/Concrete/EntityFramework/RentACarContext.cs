@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //override on tabtab
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectModels; Database=RentACar;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectModels; Database=RentACar;Trusted_Connection=true"); //projen hangi db ile ilişkili?
         }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }

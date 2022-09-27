@@ -2,6 +2,8 @@
 using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -20,19 +22,19 @@ namespace Business.Concrete
     {
         ICarDal _carDal;
 
-        public CarManager(ICarDal carDal)
+        //bağımlılığı constructor injection ile minimize ediyorum
+        public CarManager(ICarDal carDal) 
         {
             _carDal = carDal;
         }
 
-        [ValidationAspect(typeof(CarValidator))] //productvalidator'ı kullanarak add metodunu doğrula 
+        [ValidationAspect(typeof(CarValidator))] //carValidator'U kullanarak add metodunu doğrula 
         
         [SecuredOperation("car.add, admin")]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
             return new SuccessResult(Messages.ProductAdded);
-
 
 
             //if (car.Description.Length >= 2 && car.DailyPrice > 0)
@@ -45,15 +47,35 @@ namespace Business.Concrete
             //}
         }
 
+        public IResult AddTransactionalTest(Car car)
+        {
+            Add(car); //bunu yaptıktan sonra hata alırsan bu işlemi de iptal
+
+            if (car.ModelYear == "2010")
+            {
+                throw new Exception();
+            }
+            Add(car);
+            return null;
+        }
+
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.ProductRemoved);
         }
 
+        //[CacheAspect] //key, value ile tutuyoruz
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.ProductsListed);
+        }
+
+        //[CacheAspect]
+        [PerformanceAspect(5)] //metodun çalışması 5 saniyeyi geçerse beni uyar
+        public IDataResult<Car> GetById(int id)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
@@ -71,6 +93,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.Id == colorId));
         }
 
+        [CacheRemoveAspect("ICarService.Get")] //bellekte içerisinde get olan tüm key'leri iptal et
         public IResult Update(Car car)
         {
             _carDal.Update(car);

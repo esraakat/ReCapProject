@@ -48,12 +48,12 @@ namespace Business.DependencyResolvers.Autofac
 
 
 
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly(); //çalışan uygulama içerisinde
 
-            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces() //implemente edilmiş interfaceleri bul
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {
-                    Selector = new AspectInterceptorSelector() //Bütün classlar için ilk önce bu çalışır, git bak aspect var mı?
+                    Selector = new AspectInterceptorSelector() //onlar için bu metodu çağır, bütün classlar için ilk önce bu çalışır, git bak aspect var mı?
                 }).SingleInstance();
 
         }
