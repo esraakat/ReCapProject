@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
         //tested
         [HttpGet("getbycolorid")]
         public IActionResult GetByColorId(int id)
-        {
+        { 
             var result = _carService.GetCarsByColorId(id);
             if (result.Success)
             {
